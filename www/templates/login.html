@@ -20,16 +20,20 @@
 
         </div> -->
 
-        <div ng-hide="authData" class="card" ng-click="login()">
-          <button class="item">
+      <div ng-hide="authData" class="card" ng-click="login()">
+        <button class="item">
           Log In with Facebook
+        </button>
+      </div>
+
+      <div class="card" ng-show="authData" ng-click="logout()">
+        <div class="item item-text-wrap">
+          Hello {{authData.facebook.displayName}}!
+          <button type="item">
+            Log Out
           </button>
         </div>
-        <div class="card" ng-show="authData">
-          <div class="item item-text-wrap">
-            Hello {{authData.facebook.displayName}}!
-          </div>
-        </div>
+      </div>
 
     </ion-content>
 
