@@ -38,30 +38,13 @@ angular.module('jauntly.services', [])
 })
 
 .factory("Auth", function($firebaseAuth) {
-  // var usersRef = new Firebase("https://amber-fire-6746.firebaseio.com/users");
-  // return $firebaseAuth(usersRef);
-  var ref = new Firebase("https://amber-fire-6746.firebaseio.com");
-  ref.authWithOAuthPopup("facebook", function(error, authData) {
-   if (error) {
-     console.log("Login Failed!", error);
-   } else {
-     // the access token will allow us to make Open Graph API calls
-     console.log(authData.facebook.accessToken);
-   }
-  }, {
-   scope: "email" // the permissions requested
-  });
 
-  ref.onAuth(function(authData) {
-   if (authData) {
-     console.log("Authenticated with uid:", authData.uid);
-   } else {
-     console.log("Client unauthenticated.")
-   }
-  });
+  var ref = new Firebase("https://amber-fire-6746.firebaseio.com");
+  var auth = $firebaseAuth(ref);
 
   return {
-    ref : ref
+    ref : ref,
+    auth: auth
   }
 
 });
