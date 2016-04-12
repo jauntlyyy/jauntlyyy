@@ -2,19 +2,9 @@ angular.module('jauntly.addEventCtrl', [])
 
 .controller('addEventCtrl', function ($scope, $state, ExpediaInfo, GoogleGeocodeInfo, Auth, Event) {
 
-  // (function(){
-  //   // console.log(!Auth.ref.getAuth().token);
-  //   console.log('getuaht' , Auth.isSignedIn);
-  //   if (!Auth.isSignedIn) {
-  //     // $state.reload();
-  //     $state.go('app.login');
-  //   } else {
-  //     $state.reload();
-  //   }
-  // })();
-
   $scope.results = {};
   $scope.address;
+  $scope.email = Auth.authData.facebook.email;
 
   $scope.search = function (location, activity) {
     ExpediaInfo.getExpInfo(location, activity)
@@ -46,7 +36,12 @@ angular.module('jauntly.addEventCtrl', [])
   };
 
   $scope.postEvent = function (inputTitle, address, datetimeValue, duration) {
-    console.log({inputTitle: inputTitle, address: address, datetimeValue: datetimeValue, duration: duration});
+    // $scope.email = Auth.authData.facebook.email;
+    console.log('email: ', $scope.email);
+    Event.submitEvent({inputTitle: inputTitle, address: address, datetimeValue: datetimeValue, duration: duration, Email: $scope.email})
+      .then(function() {
+        console.log('event added');
+      });
     // Event.submitEvent();
   }
 

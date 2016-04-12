@@ -68,8 +68,29 @@ User.addUser = function (email) {
   });
 };
 
+Events = {};
+
+Events.eventID = function (inputTitle, Email, datetimeValue, duration, address) {
+  console.log('inside eventID')
+  return new Promise (function (resolve) {
+    if (resolve) {
+      knex('events').where({
+        inputTitle: inputTitle,
+        userId: knex('users').where({Email: Email}).select('id'),
+        datetimeValue: datetimeValue,
+        duration: duration,
+        address: address
+      }).select('id').then(function(data) {
+        console.log('dataid', data[0].id);
+        resolve(data[0].id);
+      });
+    }
+  });
+};
+
 module.exports = {
   db: db,
   knex: knex,
-  User: User
+  User: User,
+  Events: Events
 };

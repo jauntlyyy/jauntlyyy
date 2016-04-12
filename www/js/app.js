@@ -36,6 +36,7 @@ angular.module('jauntly', ['ionic', 'ion-datetime-picker', 'firebase', 'jauntly.
 
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
+    
 
   .state('app', {
     url: '/app',

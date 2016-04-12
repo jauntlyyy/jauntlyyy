@@ -2,7 +2,7 @@
   <ion-content>
     <h1>Add Event</h1>
 
-    <form ng-submit="postEvent(inputTitle, address, datetimeValue, duration)">
+    <form >
       <div class="list">
         <label class="item item-input item-stacked-label">
           <span class="input-label">Event Name</span>
@@ -21,7 +21,7 @@
           <input type="text" placeholder="duration" value = "{{ duration }}" ng-model="duration">
         </label>
       </div>
-      <button type="submit" class="button icon-right ion-chevron-right button-calm">Submit</button>
+      <button type="submit" class="button icon-right ion-chevron-right button-calm" ng-click="postEvent(inputTitle, address, datetimeValue, duration)">Submit</button>
     </form>
 
     <form class="item-input">

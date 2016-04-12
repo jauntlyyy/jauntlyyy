@@ -73,11 +73,13 @@ angular.module('jauntly.services', [])
   }
 
   var submitEvent = function (data) {
-    console.log(data);
+    console.log('inside submit', data);
+    return $http.post('/api/events/events', data);
   }
 
   return {
-    getAllEvents: getAllEvents
+    getAllEvents: getAllEvents,
+    submitEvent: submitEvent
   }
 });
 
