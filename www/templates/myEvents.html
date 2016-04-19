@@ -1,26 +1,25 @@
-<ion-view view-title="My Events">
+<ion-view view-title="My Events" style="background: #4F5052">
   <ion-content>
-    <h1>My Events</h1>
+    <h1> </h1>
+    
     <div class="fb-login-button" data-max-rows="1" data-size="xlarge" data-show-faces="false" data-auto-logout-link="true"></div>
-    <div ng-repeat="data in data" ng-if="data.userId === id">
-      <div><img src="{{ data.imageUrl }}" alt=""></div>
-      <div>Event Name: {{data.inputTitle}}</div>
-      <div>Date/Time: {{data.datetimeValue}}</div>
-      <div>Duration: {{data.duration}}</div>
-      <div>Address: {{data.address}}</div>
-      <button type="submit" ng-click="deleteEvent(data.id)">DELETE</button>
-    </div>
 
-    <h1>Events I Joined</h1>
-    <div ng-repeat="input in filtered track by $index" ng-if="input.userId !== id">
-      <div><img src="{{ input.imageUrl }}" alt=""></div>
-      <div>Event Name: {{input.inputTitle}}</div>
-      <div>Date/Time: {{input.datetimeValue}}</div>
-      <div>Duration: {{input.duration}}</div>
-      <div>Address: {{input.address}}</div>
-      <div>EventIDs: {{input.eventIDs}}</div>
-      <div>id: {{input.id}}</div>
-      <button type="submit" ng-click="unjoinEvent(input.id, input.userId)">Unjoin</button>
+    <div class="item-input" ng-repeat="data in data" ng-if="data.userId === id">
+      <div class="list card"style="margin:auto;">
+        <div class="item item-divider" style="background:#04BDCC; color:white">{{data.inputTitle}}</div>
+        <div class="item item-image"><img src="{{ data.imageUrl }}" alt=""></div>
+        <div class="item item-text-wrap"><b>Where</b>: {{data.address}}</div>
+        <div class="item item-text-wrap"><b>When</b>: {{data.datetimeValue}}</div>
+        <div class="item item-text-wrap"><b>How long</b>: {{data.duration}}</div>
+        <div><i class="button button-block ion-map" style="margin:auto; font-size:30; color:white; border-color:white" ng-click="showMap = ! showMap"></i>
+          <ng-map zoom="15" center="{{ data.latlng }}" style="height: 400px; width: 400px; display: block; margin:auto; padding:8px" ng-show="showMap">
+            <marker position="{{ data.latlng }}" />
+            <shape name="circle" radius="100" center="{{ data.latlng }}" radius="4000" />
+            <control name="overviewMap" opened="true" />
+          </ng-map>
+        </div>
+        <div><i class="button button-block ion-ios-trash-outline" style="margin:auto; color:white; font-size:30; border-color:white;" type="submit" ng-click="deleteEvent(data.id)"></i></div>
+      </div>
     </div>
 
   </ion-content>

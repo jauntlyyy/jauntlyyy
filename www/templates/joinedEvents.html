@@ -1,0 +1,28 @@
+<ion-view view-title="Joined Events" style="background: #4F5052">
+  <ion-content>
+
+<h1> </h1>
+
+<div class="fb-login-button" data-max-rows="1" data-size="xlarge" data-show-faces="false" data-auto-logout-link="true"></div>
+
+    <div class="item-input" ng-repeat="input in filtered track by $index" ng-if="input.userId !== id">
+    	<div class="list card" style="margin:auto">
+     	<div class="item item-divider" style="background:#04BDCC; color:white">{{input.inputTitle}}</div>
+        <div class="item item-image"><img src="{{ input.imageUrl }}" alt=""></div>
+      	<div class="item item-text-wrap"><b>Where</b>: {{input.address}}</div>
+      	<div class="item item-text-wrap"><b>When</b>: {{input.datetimeValue}}</div>
+      	<div class="item item-text-wrap"><b>How long</b>: {{input.duration}}</div>
+       	<div><i class="button button-block ion-map" style="margin:auto; color:white; font-size:30; border-color:white" ng-click="showMap = ! showMap"></i>
+      		<ng-map zoom="15" center="{{ input.latlng }}" style="height: 400px; width: 400px; display: block; margin:auto; padding:8px" ng-show="showMap">
+        	<marker position="{{ input.latlng }}" />
+        	<shape name="circle" radius="100" center="{{ input.latlng }}" radius="4000" />
+        	<control name="overviewMap" opened="true" />
+      		</ng-map>
+      	</div>
+      	<div><i class="button button-block ion-close-circled" type="submit" style="margin:auto; color:white; background:#F0736A; border-color:white;" ng-click="unjoinEvent(input.id, input.userId)"></i></div>
+    	</div>
+	</div>
+</div>
+
+	</ion-content>
+</ion-view>

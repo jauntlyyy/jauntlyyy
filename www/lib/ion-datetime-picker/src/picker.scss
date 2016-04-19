@@ -11,15 +11,15 @@
         }
         .day {
             &:hover, &.activated, &.today:hover, &.today.activated {
-                background-color: #bdf;
-                color: black;
+                background-color: #04BDCC;
+                color: white;
                 cursor: pointer;
             }
             &.today {
-                background-color: #e4e4e4;
+                background-color: #04BDCC;
             }
             &.selected, &.selected:hover, &.selected.activated {
-                background-color: #387ef5;
+                background-color: #04BDCC;
                 color: white;
             }
         }
@@ -66,7 +66,7 @@
                 padding: 0 5px;
 
                 &.ng-invalid {
-                    background-color: #ffe4ea;
+                    background-color: #F0736A;
                 }
                 &::-webkit-outer-spin-button, &::-webkit-inner-spin-button {
                     display: none;
@@ -122,7 +122,7 @@
                 padding: 0 5px;
 
                 &.ng-invalid {
-                    background-color: #ffe4ea;
+                    background-color: #F0736A;
                 }
                 &::-webkit-outer-spin-button, &::-webkit-inner-spin-button {
                     display: none;

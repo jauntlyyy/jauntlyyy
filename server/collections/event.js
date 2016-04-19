@@ -19,6 +19,7 @@ module.exports = {
           datetimeValue: req.body.datetimeValue,
           duration: req.body.duration,
           address: req.body.address,
+          latlng: req.body.latlng,
           imageUrl: req.body.imageUrl
         })
         .then(function (firstData) {

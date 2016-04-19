@@ -103,7 +103,6 @@ angular.module('jauntly.services', [])
     var params= {EventID: eventid, UserId: userid};
     var config = {params: params};
     var url = '/api/unjoinevent/' + eventid;
-    console.log(url, params);
     return $http.delete(url, config);
   };
 
@@ -118,5 +117,4 @@ angular.module('jauntly.services', [])
     deleteEvent: deleteEvent
   }
 });
-
 

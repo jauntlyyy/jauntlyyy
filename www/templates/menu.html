@@ -13,25 +13,30 @@
   </ion-side-menu-content>
 
   <ion-side-menu side="left">
-    <ion-header-bar class="bar-stable">
-      <h1 class="title">Left</h1>
+    <ion-header-bar>
+      <h1 class="title"><img src="../img/joinmee.png" height="28.3" width="38.9" style="margin: 7px"></h1>
     </ion-header-bar>
     <ion-content>
       <ion-list>
-        <ion-item menu-close href="#/app/login">
-          Login
+        <ion-item menu-close href="#/app/login" style="color:#4F5052;">
+          <i class="ion-social-facebook-outline"></i>
+          Login/Logout
         </ion-item>
-<!--         <ion-item menu-close on-click="logout()">
-          Logout
-        </ion-item> -->
-        <ion-item menu-close href="#/app/search">
+        <ion-item menu-close href="#/app/search" style="color:#4F5052;">
+          <i class="ion-ios-search-strong"></i>
           Search
         </ion-item>
-        <ion-item menu-close href="#/app/myevents">
+        <ion-item menu-close href="#/app/addevent" style="color:#4F5052;">
+          <i class="ion-ios-plus-outline"></i>
+          Add Event
+        </ion-item>
+        <ion-item menu-close href="#/app/myevents" style="color:#4F5052;">
+          <i class="ion-ios-list-outline"></i>
           My Events
         </ion-item>
-        <ion-item menu-close href="#/app/addevent">
-          Add Events
+        <ion-item menu-close href="#/app/joinedevents" style="color:#4F5052;">
+          <i class="ion-ios-personadd-outline"></i>
+          Joined Events
         </ion-item>
       </ion-list>
     </ion-content>

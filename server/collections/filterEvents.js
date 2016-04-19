@@ -8,7 +8,6 @@ app.use(bodyParser());
 module.exports = {
   'events': {
     post: function(req, res) {
-      console.log(req);
       Event.getJoint(req.body.userId)
         .then(function(data) {
           res.send(data);

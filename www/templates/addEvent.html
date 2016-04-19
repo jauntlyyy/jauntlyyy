@@ -1,44 +1,53 @@
-<ion-view view-title="Add Event">
+<ion-view view-title="Add Event" style="background: #4F5052">
   <ion-content>
-    <h1>Add Event</h1>
+    <h1>  </h1>
 
     <form >
       <div class="list">
+        <ng-map zoom="15" center="{{ coordinates }}" style="height: 400px; width: 400px; display: block; margin: auto;">
+          <marker position="{{ coordinates }}" />
+          <shape name="circle" radius="100" center="{{ coordinates }}" radius="4000" />
+          <control name="overviewMap" opened="true" />
+        </ng-map>
         <input class="ng-hide" ng-model="imageUrl" value="{{ imageUrl }}">
-        <img src="{{ imageUrl }}" alt="">
         <label class="item item-input item-stacked-label">
-          <span class="input-label">Event Name</span>
-          <input type="text" placeholder="event name" value="{{ inputTitle }}" ng-model="inputTitle">
+          <span class="input-label"></span>
+          <input type="text" placeholder="Event Name" value="{{ inputTitle }}" ng-model="inputTitle">
         </label>
         <label class="item item-input item-stacked-label">
-          <span class="input-label">Location</span>
-          <input type="text" placeholder ="location" value="{{ address }}" ng-model="address">
+          <span class="input-label"></span>
+          <input type="text" placeholder ="Location" value="{{ address }}" ng-model="address">
         </label>
         <label class="item item-input item-stacked-label" ion-datetime-picker am-pm ng-model="datetimeValue">
-          <span class="input-label">Date and Time</span>
-          <input type="text" placeholder="date and time" value = "{{ datetimeValue | date: "yyyy-MM-dd h:mm:ss a" }}" ng-submit="getDateTime()" ng-model="datetimeValue">
+          <span class="input-label"></span>
+
+          <input type="text" placeholder="Date and Time" value = "{{ datetimeValue | amDateFormat:'dddd, MMMM Do YYYY, h:mm:ss a' }}" ng-submit="getDateTime()" ng-model="datetimeValue">
         </label>
         <label class="item item-input item-stacked-label">
-          <span class="input-label">Duration</span>
-          <input type="text" placeholder="duration" value = "{{ duration }}" ng-model="duration">
+          <span class="input-label"></span>
+          <input type="text" placeholder="Duration" value = "{{ duration }}" ng-model="duration">
         </label>
       </div>
-      <button type="submit" class="button icon-right ion-chevron-right button-calm" ng-click="postEvent(inputTitle, address, datetimeValue, duration, imageUrl)">Submit</button>
+      <div style="text-align:center; padding-bottom:20px">
+       <span><button type="submit" class="button" style="color: white; background: #F0736A; width:48%;" ng-click="postEvent(inputTitle, address, datetimeValue, duration, imageUrl)">Add</button></span>
+      <span><button class="button" style="color: white; background: #F0736A; width:48%;" ng-click="clearFields()">Clear</button></span>
+    </div>
     </form>
 
-    <button ng-click="clearFields()">Cancel</button>
-
-    <form class="item-input">
-      <input type="text" ng-model="location" placeholder="location">
-      <input type="text" ng-model="activity" placeholder="activity">
-      <button class="ng-hide" type="submit" ng-click="search(location, activity)">Submit</button>
+    <form>
+      <div class="item-input-inset">
+        <label class="item item-input-wrapper item-stacked-label" style="background:white; padding:5px; length:40"> 
+          <i class="icon ion-ios-search placeholder-icon"></i>
+          <span><input type="text" ng-model="location" placeholder="Enter a location" style="display:inline"></span>
+        </label>
+          <span><button class="button" type="submit" style="background:#F0736A; color:white; display:inline; min-height:37.5px; line-height:37.5px;" ng-click="search(location)">Find Activities</button></span>
+      </div>
     </form>
 
-
-    <div class="results item-input" ng-repeat="result in this.results | limitTo: 15">
-      <div class="info">
-        <div class="title">{{ result.title }}</div>
-        <div class="thumb"><img ng-click='clickInfo(result); getAddress(result.latLng)' ng-src="{{result.imageUrl}}"></div>
+    <div class="results item-input" ng-repeat="result in this.results | limitTo: 20">
+      <div class="list card" style="margin:auto;">
+        <div class="item item-divider" style="background:#04BDCC; color:white">{{ result.title }}</div>
+        <div class="item item-image"><img ng-click='clickInfo(result); getAddress(result.latLng)' ng-src="{{result.imageUrl}}"></div>
       </div>
     </div>
 

@@ -33,6 +33,7 @@ knex.schema.createTableIfNotExists('events', function (event) {
   event.dateTime('datetimeValue');
   event.string('duration');
   event.string('address');
+  event.string('latlng');
   event.string('imageUrl');
 }).then(function() {
   console.log('events table created');
