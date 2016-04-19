@@ -6,6 +6,7 @@ angular.module('jauntly.appCtrl', [])
   $scope.data;
 
   $scope.login = function() {
+    console.log('in login')
     Auth.auth.$authWithOAuthPopup('facebook', {remember: "sessionOnly", scope: "email"})
       .then(function(authData) {
         Auth.authData = authData;
