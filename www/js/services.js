@@ -70,6 +70,7 @@ angular.module('jauntly.services', [])
   };
 
   var submitEvent = function (data) {
+    console.log('in submitEvent', data)
     return $http.post('/api/events/events', data);
   };
 

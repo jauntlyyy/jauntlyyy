@@ -13,14 +13,13 @@ module.exports = {
       });
     },
     post: function (req, res) {
+      console.log('inputTitle, email, datetimeValue, duration, address', req.body.inputTitle, req.body.Email)
       knex('events').insert({
           inputTitle: req.body.inputTitle,
           userId: knex('users').where({Email: req.body.Email}).select('id'),
           datetimeValue: req.body.datetimeValue,
           duration: req.body.duration,
-          address: req.body.address,
-          latlng: req.body.latlng,
-          imageUrl: req.body.imageUrl
+          address: req.body.address
         })
         .then(function (firstData) {
             knex('users_events').insert({
