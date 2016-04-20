@@ -12,7 +12,7 @@ angular.module('jauntly.appCtrl', [])
       .then(function(authData) {
         Auth.authData = authData;
         $scope.data = authData;
-        $scope.fbid = authData.auth.uid.slice(8);
+        $scope.fbid = authData.auth.uid.slice(9);
         console.log('uid',  $scope.fbid);
         window.localStorage.setItem('token', $scope.data.token);
         window.localStorage.setItem('displayName', $scope.data.facebook.displayName);
