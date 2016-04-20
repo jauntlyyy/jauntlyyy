@@ -13,6 +13,7 @@ angular.module('jauntly.myEventsCtrl', [])
     })
     .then(function() {
       Event.getMyID(Auth.authData.facebook.email).then(function(data) {
+        console.log('data line 16 myEventsCtrl', data)
       $scope.id = data.data[0].id;
       })
       .then(function() {
