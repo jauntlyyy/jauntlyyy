@@ -20,6 +20,8 @@ var knex = require('knex') ({
 // Schema
 knex.schema.createTableIfNotExists('users', function (user) {
   user.increments('id').primary();
+  user.string('fbid');
+  user.string('name');
   user.string('Email').unique();
 }).then(function() {
   console.log('users table created');

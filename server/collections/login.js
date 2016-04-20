@@ -10,9 +10,10 @@ module.exports = {
     post: function(req, res) {
       User.findUser(req.body.Email).then(function(data) {
         if (data.length > 0) {
+          console.log('find user')
           res.redirect('/#/app/myevents');
         } else {
-          User.addUser(req.body.Email).then(function() {
+          User.addUser(req.body).then(function() {
             res.send('user added');
           })
         }

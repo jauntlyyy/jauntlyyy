@@ -13,7 +13,6 @@ module.exports = {
       });
     },
     post: function (req, res) {
-      console.log('inputTitle, email, datetimeValue, duration, address', req.body.inputTitle, req.body.Email)
       knex('events').insert({
           inputTitle: req.body.inputTitle,
           userId: knex('users').where({Email: req.body.Email}).select('id'),
@@ -22,6 +21,7 @@ module.exports = {
           address: req.body.address
         })
         .then(function (firstData) {
+          console.log('firstDat', firstData)
             knex('users_events').insert({
               EventID: firstData[0],
               UserId: knex('users').where({Email: req.body.Email}).select('id')

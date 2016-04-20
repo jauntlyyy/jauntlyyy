@@ -54,9 +54,9 @@ angular.module('jauntly.services', [])
 })
 
 .factory("FB", function($http) {
-  var postEmail = function (email) {
-    var plugin = {Email: email};
-    return $http.post('/api/login/user', plugin);
+  var postEmail = function (data) {
+    //var plugin = {Email: email};
+    return $http.post('/api/login/user', data);
   };
   return {
     postEmail: postEmail
