@@ -5,7 +5,7 @@
 
 <div class="fb-login-button" data-max-rows="1" data-size="xlarge" data-show-faces="false" data-auto-logout-link="true"></div>
 
-    <div class="item-input" ng-repeat="input in filtered track by $index" ng-if="input.userId !== id">
+    <div class="item-input" ng-repeat="input in filtered" ng-if="input.userId !== id">
     	<div class="list card" style="margin:auto">
      	<div class="item item-divider" style="background:#04BDCC; color:white">{{input.inputTitle}}</div>
         <div class="item item-image"><img src="{{ input.imageUrl }}" alt=""></div>
@@ -19,6 +19,9 @@
         	<control name="overviewMap" opened="true" />
       		</ng-map>
       	</div>
+        <div><i class="button button-block ion-close-circled" type="submit" style="margin:auto; color:white; background:#F0736A; border-color:white;" ng-click="showAttendees(input.id); showLists = ! showLists">
+          <div ng-show="showLists" ng-repeat="user in users" style="background: white;"><img src="http://graph.facebook.com/{{user.fbid}}/picture"><span>{{user.name}}</span></div>
+        </i></div>
       	<div><i class="button button-block ion-close-circled" type="submit" style="margin:auto; color:white; background:#F0736A; border-color:white;" ng-click="unjoinEvent(input.id, input.userId)"></i></div>
     	</div>
 	</div>

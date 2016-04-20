@@ -11,7 +11,9 @@
         <div class="item item-text-wrap"><b>Where</b>: {{data.address}}</div>
         <div class="item item-text-wrap"><b>When</b>: {{data.datetimeValue}}</div>
         <div class="item item-text-wrap"><b>How long</b>: {{data.duration}}</div>
-        <div><i class="button button-block ion-map" style="margin:auto; font-size:30; color:white; border-color:white" ng-click="showMap = ! showMap"></i>
+        <div><i class="button button-block ion-map" style="margin:auto; font-size:30; color:white; border-color:white" ng-click="getJoinees({{data.id}})"></i>
+
+          <!-- ng-click="showMap = ! showMap" -->
           <ng-map zoom="15" center="{{ data.latlng }}" style="height: 400px; width: 400px; display: block; margin:auto; padding:8px" ng-show="showMap">
             <marker position="{{ data.latlng }}" />
             <shape name="circle" radius="100" center="{{ data.latlng }}" radius="4000" />

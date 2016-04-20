@@ -9,7 +9,7 @@ var unjoinRoute = require('./routes/unjoinEventsRoute.js');
 var loginRoute = require('./routes/loginRoute.js');
 var myEventsRoute = require('./routes/myEventsRoute.js');
 var joinRoute = require('./routes/joinEventsRoute.js');
-
+var singleEventRoute = require('./routes/singleEventRoute.js');
 // Require .env
 require('dotenv').config();
 
@@ -30,6 +30,7 @@ app.use('/api/myevents/', myEventsRoute);
 app.use('/api/filter/', filterRoute);
 app.use('/api/login', loginRoute);
 app.use('/api/join/', joinRoute);
+app.use('/api/event',singleEventRoute);
 
 
 app.listen(port, function(){
