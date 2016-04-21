@@ -9,6 +9,7 @@ angular.module('jauntly.myEventsCtrl', [])
   $scope.users;
 //need to perfect it, remove the last two promises.
   $scope.getMine = function() {
+    //get all events by user
     Event.getMyEvents(Auth.authData.facebook.email).then(function(data) {
       $scope.data = data.data
       console.log("in myEventsCtrl, data", $scope.data)

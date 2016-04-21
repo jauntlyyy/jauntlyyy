@@ -11,13 +11,16 @@
 
     <div class="item-input" ng-repeat="data in data | filter:search" ng-if="data.userId !== myID">
       <div class="list card"style="margin:auto;">
-        <div class="item item-divider" style="background:#04BDCC; color:white">{{data.inputTitle}}</div>
-        <div class="item item-image"><img src="{{ data.imageUrl }}" alt=""></div>
+        <div class="item item-divider">{{data.inputTitle}}</div>
+<!--         <div class="item item-image"><img src="{{ data.imageUrl }}" alt=""></div> -->
         <div class="item item-text-wrap"><b>Where</b>: {{data.address}}</div>
         <div class="item item-text-wrap"><b>When</b>: {{data.datetimeValue}}</div>
         <div class="item item-text-wrap"><b>How long</b>: {{data.duration}}</div>
-        <div class="item item-text-wrap"><b>User ID</b>: {{data.userId}}</div>
+<!--         <div class="item item-text-wrap"><b>User ID</b>: {{data.userId}}</div> -->
         <div><i class="button button-block ion-person-add" style="font-size:50; margin:auto; color:white" type="submit" ng-click="joinEvent(data.id)"></i></div>
+        <div><i class="button button-block ion-person-stalker" type="submit" style="margin:auto; color:white; background:#F0736A; border-color:white;" ng-click="showAttendees(data.id); showLists = ! showLists">
+        </i></div> 
+          <div class="allAttendees" ng-show="showLists" ng-repeat="user in users" style="background: white;"><a href="http://facebook.com/{{user.fbids}}" target="_blank"><img src="http://graph.facebook.com/{{user.fbid}}/picture"></a><span class="attendeeName">{{user.name}}</span></div>
       </div>
     </div>
 
