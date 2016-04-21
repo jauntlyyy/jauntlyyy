@@ -9,10 +9,11 @@ User.findUser = function (email) {
   })
 };
 
-User.addUser = function (email) {
+User.addUser = function (data) {
   return new Promise (function(resolve) {
     if (resolve) {
-      knex('users').insert({ Email: email }).then(function() {
+      console.log('data in promise', data.fbid, data.name,data.Email)
+      knex('users').insert({fbid: data.fbid, name: data.name, Email: data.Email }).then(function() {
         resolve(true);
       });
     }

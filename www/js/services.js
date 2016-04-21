@@ -54,9 +54,9 @@ angular.module('jauntly.services', [])
 })
 
 .factory("FB", function($http) {
-  var postEmail = function (email) {
-    var plugin = {Email: email};
-    return $http.post('/api/login/user', plugin);
+  var postEmail = function (data) {
+    //var plugin = {Email: email};
+    return $http.post('/api/login/user', data);
   };
   return {
     postEmail: postEmail
@@ -70,6 +70,7 @@ angular.module('jauntly.services', [])
   };
 
   var submitEvent = function (data) {
+    console.log('in submitEvent', data)
     return $http.post('/api/events/events', data);
   };
 
@@ -81,6 +82,14 @@ angular.module('jauntly.services', [])
     var plugin = {Email: data};
     return $http.post('/api/users/users', plugin);
   };
+
+  var getAttendees = function(id) {
+    var params = {id: id};
+    var config = {params: params};
+    var url = 'api/event/' + id;
+    console.log('in service getAttendees, url, config', url, config)
+    return $http.get(url, config);
+  }
 
   var postToJoint = function (eventID, userID) {
     var plugin = {eventID: eventID, userId: userID};
@@ -96,6 +105,7 @@ angular.module('jauntly.services', [])
     var params = {id: id};
     var config = {params: params};
     var url = '/api/myevents/' + id;
+    console.log("line 104 delete events", url)
     return $http.delete(url, config);
   };
 
@@ -106,15 +116,24 @@ angular.module('jauntly.services', [])
     return $http.delete(url, config);
   };
 
+  var findCreator = function(id) {
+    var params = {id: id};
+    var config = {params: params};
+    var url = 'api/event/' + id;
+    return $http.post(url, config);
+  }
+
   return {
     getAllEvents: getAllEvents,
     submitEvent: submitEvent,
     getMyEvents: getMyEvents,
     getMyID: getMyID,
+    getAttendees: getAttendees,
     postToJoint: postToJoint,
     postID: postID,
     unjoinEvent: unjoinEvent,
-    deleteEvent: deleteEvent
+    deleteEvent: deleteEvent,
+    findCreator: findCreator
   }
 });
 

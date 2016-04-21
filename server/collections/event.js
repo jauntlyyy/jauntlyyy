@@ -18,11 +18,10 @@ module.exports = {
           userId: knex('users').where({Email: req.body.Email}).select('id'),
           datetimeValue: req.body.datetimeValue,
           duration: req.body.duration,
-          address: req.body.address,
-          latlng: req.body.latlng,
-          imageUrl: req.body.imageUrl
+          address: req.body.address
         })
         .then(function (firstData) {
+          console.log('firstDat', firstData)
             knex('users_events').insert({
               EventID: firstData[0],
               UserId: knex('users').where({Email: req.body.Email}).select('id')

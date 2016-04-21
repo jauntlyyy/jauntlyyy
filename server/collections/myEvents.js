@@ -15,6 +15,7 @@ module.exports = {
     },
 
     delete: function(req, res) {
+      console.log('req.params in myEvents', req.params)
       Event.delete(req.params.event_id)
         .then(function(deleted) {
           if (deleted) {

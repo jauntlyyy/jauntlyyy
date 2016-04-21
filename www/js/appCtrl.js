@@ -4,12 +4,16 @@ angular.module('jauntly.appCtrl', [])
   
   $scope.isLoggedIn = false;
   $scope.data;
+  $scope.fbid;
 
   $scope.login = function() {
+    console.log('in login')
     Auth.auth.$authWithOAuthPopup('facebook', {remember: "sessionOnly", scope: "email"})
       .then(function(authData) {
         Auth.authData = authData;
         $scope.data = authData;
+        $scope.fbid = authData.auth.uid.slice(9);
+        console.log('uid',  $scope.fbid);
         window.localStorage.setItem('token', $scope.data.token);
         window.localStorage.setItem('displayName', $scope.data.facebook.displayName);
         $scope.displayName = window.localStorage.getItem('displayName');
@@ -18,7 +22,14 @@ angular.module('jauntly.appCtrl', [])
         return Auth.authData;
       })
       .then(function() {
-        FB.postEmail(Auth.authData.facebook.email).then(function() {
+        var data = {
+          Email: Auth.authData.facebook.email,
+          fbid: $scope.fbid,
+          name: $scope.data.facebook.displayName
+        };
+
+        console.log('data', data)
+        FB.postEmail(data).then(function() {
           console.log('email posted.');
         });
       })

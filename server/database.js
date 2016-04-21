@@ -20,6 +20,8 @@ var knex = require('knex') ({
 // Schema
 knex.schema.createTableIfNotExists('users', function (user) {
   user.increments('id').primary();
+  user.string('fbid');
+  user.string('name');
   user.string('Email').unique();
 }).then(function() {
   console.log('users table created');
@@ -33,8 +35,6 @@ knex.schema.createTableIfNotExists('events', function (event) {
   event.dateTime('datetimeValue');
   event.string('duration');
   event.string('address');
-  event.string('latlng');
-  event.string('imageUrl');
 }).then(function() {
   console.log('events table created');
 });
