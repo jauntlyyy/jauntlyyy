@@ -6,3 +6,18 @@ h1 {
 #map {
   height: 75%;
 }
+
+.eventList {
+	background-color: white;
+	color: #666;
+	max-width: 450px;
+}
+
+.allAttendees {
+	padding: 10px;
+}
+
+.attendeeName {
+	padding: 20px;
+	text-align: top;
+}
